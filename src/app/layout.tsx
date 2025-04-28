@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { ModeToggle } from "@/components/theme/theme-toggle";
 
 const VazirFont = Vazirmatn({
   variable: "--font-vazir",
@@ -18,8 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${VazirFont.variable} font-[family-name:var(--font-vazir)] antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${VazirFont.variable} font-[family-name:var(--font-vazir)] antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <ModeToggle />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
