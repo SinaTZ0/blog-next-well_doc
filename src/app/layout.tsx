@@ -3,6 +3,7 @@ import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ModeToggle } from "@/components/theme/theme-toggle";
+import { ReactScan } from "@/components/react-scan/compenet";
 
 const VazirFont = Vazirmatn({
   variable: "--font-vazir",
@@ -20,7 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fa" suppressHydrationWarning>
+      <ReactScan />
       <body className={`${VazirFont.variable} font-[family-name:var(--font-vazir)] antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <ModeToggle />

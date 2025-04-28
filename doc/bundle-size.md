@@ -29,3 +29,5 @@
       + static/chunks/148-229a557ea6ce12f7.js (33.69 KB)                => *newly added*
       + static/chunks/app/layout-8e3870be5dba9e8a.js (1.396 kb)         => increased from (314 B) to (1.71 KB)
 
+- i added React Scan to project and suprizingly the project size reduced! from (234.14 KB) to (233.52 KB). Also the transfer size doesn't change because it doesn't included in build time.
+
