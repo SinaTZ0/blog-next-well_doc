@@ -1,9 +1,10 @@
 
-- lets add Vazir font.
+- lets add `Vazir font`.
   -- the font add about 35 and 46 (82kb in total).
   -- right now the size is "237 kB transferred, 506 kB resources"
+  -- **Final Size**: 82 kb
 
-- lets see how much all compoennts of Shadcn adding to this. right now the first page is "237 kB transferred, 505 kB resources". lets see if that change. it shouldn't right because it does not have anything with Shadcn but we see.
+- lets see how much all compoennts of `Shadcn` adding to this. right now the first page is "237 kB transferred, 505 kB resources". lets see if that change. it shouldn't, right? because it does not have anything with Shadcn but we see.
   -- ok right now adding Shadcn and Themeing(dark mode inculded) the size is "286 kB transferred, 690 kB resources"
   -- so we can say roughly it's 50kb for UI Libarary which is acceptable but we are not even use any component in home page. let's check that!
   -- ok so after using some Shadcn component in main page the Size really didn't change that much. it's now "231 kB transferred, 622 kB resources"(it's even lower i know!).
@@ -28,6 +29,14 @@
 
       + static/chunks/148-229a557ea6ce12f7.js (33.69 KB)                => *newly added*
       + static/chunks/app/layout-8e3870be5dba9e8a.js (1.396 kb)         => increased from (314 B) to (1.71 KB)
+  -- **Final Size**: 46 kb
 
-- i added React Scan to project and suprizingly the project size reduced! from (234.14 KB) to (233.52 KB). Also the transfer size doesn't change because it doesn't included in build time.
+- i added `React Scan` to project and suprizingly the project size reduced! from (234.14 KB) to (233.52 KB). Also the transfer size doesn't change because it doesn't included in build time.
+  -- **Final Size**: 0 kb
 
+- lets add Drizzle and see how much that add. this one shouldn't add much because it run on server but some type that would be share like schema might add to size.
+  -- we have these two warring( WARN  2 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5) but doesn't matter since it for drizzle-kit which is used in dev-dependency. you can check it with "pnpm why @esbuild-kit/core-utils".
+  -- i added `Zod` for env as well but mark it server only. it look like this way it didn't add anything to bundle size.
+  -- the size with `Drizzle` and `Zod` is now (233.52 KB). so not even 1 byte added!
+  -- i removed all of chrome extension for measuring. now the current transfer size is => 278 kB transferred, 683 kB resources
+  -- **Final Size**: 0 kb

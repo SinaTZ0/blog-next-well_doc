@@ -1,6 +1,10 @@
+import { db } from "@/lib/drizzle/db";
 import Image from "next/image";
 
-export default function Home() {
+const Home = async () => {
+  const data = (await db.query.messages.findFirst({ orderBy: (m, { desc }) => desc(m.createdAt) })) ?? {
+    message: "Fluffy Dreams",
+  };
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -10,7 +14,7 @@ export default function Home() {
             Get started by editing{" "}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded  font-semibold">src/app/page.tsx</code>.
           </li>
-          <li className="tracking-[-.01em]">Save and see your changes instantly.</li>
+          <li className="tracking-[-.01em]">{data.message}</li>
           <li className="tracking-[-.01em] vazir" dir="rtl">
             با سلام و روز بخیری.
           </li>
@@ -67,4 +71,6 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+};
+
+export default Home;
