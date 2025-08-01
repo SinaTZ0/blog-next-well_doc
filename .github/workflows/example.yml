@@ -8,6 +8,10 @@ on:
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write  # Essential for commenting on PRs
+      issues: write         # Also needed as PRs use issue endpoints
     env:
       DATABASE_URL: "postgresql://dummy:dummy@localhost:5432/dummy"
       BETTER_AUTH_SECRET: "testtesttesttesttestAASecret22"
@@ -17,13 +21,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Important for base branch analysis
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
-      
       - name: Install dependencies
         run: npm install --legacy-peer-deps
       
