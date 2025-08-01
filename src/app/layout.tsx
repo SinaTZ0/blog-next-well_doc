@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ModeToggle } from "@/components/theme/theme-toggle";
 import { ReactScan } from "@/components/react-scan/compenet";
+import { Toaster } from "@/components/ui/sonner";
+import { AuthRefreshToken } from "@/components/auth/token-refresher";
 
 const VazirFont = Vazirmatn({
   variable: "--font-vazir",
@@ -26,8 +28,10 @@ export default function RootLayout({
       <body className={`${VazirFont.variable} font-[family-name:var(--font-vazir)] antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <ModeToggle />
+          <Toaster richColors />
           {children}
         </ThemeProvider>
+        <AuthRefreshToken />
       </body>
     </html>
   );

@@ -8,6 +8,12 @@ on:
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "postgresql://dummy:dummy@localhost:5432/dummy"
+      BETTER_AUTH_SECRET: "testtesttesttesttestAASecret22"
+      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+      GOOGLE_CLIENT_ID: "somethingsomething"
+      GOOGLE_CLIENT_SECRET: "somethingsomething"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

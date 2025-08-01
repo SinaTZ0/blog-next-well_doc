@@ -2,7 +2,10 @@ import { db } from "@/lib/drizzle/db";
 import Image from "next/image";
 
 const Home = async () => {
-  const data = (await db.query.messages.findFirst({ orderBy: (m, { desc }) => desc(m.createdAt) })) ?? {
+  // const data = (await db.query.messages.findFirst({ orderBy: (m, { desc }) => desc(m.createdAt) })) ?? {
+  //   message: "Fluffy Dreams",
+  // };
+  const data = {
     message: "Fluffy Dreams",
   };
   return (
