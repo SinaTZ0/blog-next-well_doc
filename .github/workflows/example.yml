@@ -31,9 +31,9 @@ jobs:
         run: npm run build
       
       - name: Analyze bundle sizes
-        uses: ./
+        uses: SinaTZ0/next-bundle-size-action@master
         with:
           working-directory: '.'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           comment-strategy: 'always'
-          base-branch: 'main'
+          base-branch: 'master'
